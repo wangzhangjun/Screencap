@@ -1,6 +1,7 @@
 package com.example.administrator.screencap;
 
 
+import android.app.Notification;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -21,11 +22,11 @@ import java.io.IOException;
 
 
 public class RecordService extends Service {
-    private static MediaProjection mediaProjection;
-    private static MediaRecorder mediaRecorder;
-    private static VirtualDisplay virtualDisplay;
+    private  MediaProjection mediaProjection;
+    private  MediaRecorder mediaRecorder;
+    private  VirtualDisplay virtualDisplay;
 
-    private static boolean running = false;
+    private  boolean running = false;
 
 //    private int width = 720;
 //    private int height = 1080;
@@ -39,6 +40,11 @@ public class RecordService extends Service {
     static String ScreencapPath;
     static String videoName;
 
+
+    void startForground() {
+        //启动前台service， 在新版本api上必须有个通知栏告知
+        Notification
+    }
 
     @Override
     public IBinder onBind(Intent intent) {

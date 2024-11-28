@@ -20,7 +20,7 @@ public class RecordApplication extends Application {
     super.onCreate();
     application = this;
     // 启动 Marvel service
-    startService(new Intent(this, RecordService.class));
+//    startService(new Intent(this, RecordService.class));
   }
 
   public static RecordApplication getInstance() {

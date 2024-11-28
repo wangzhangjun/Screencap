@@ -35,17 +35,18 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     projectionManager = (MediaProjectionManager) getSystemService(MEDIA_PROJECTION_SERVICE);
     setContentView(R.layout.activity_main);
+    startForegroundService(new Intent(this, RecordService.class));
 
 //    recordApplication = RecordApplication.getInstance();
 //    recordApplication.onCreate();
-    startService(new Intent(this, RecordService.class));
+//    startService(new Intent(this, RecordService.class));
 
     startBtn = (Button) findViewById(R.id.screencap);
 //    startBtn.setEnabled(false);
     startBtn.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        recordService = new RecordService();
+//        recordService = new RecordService();
         if (recordService.isRunning()) {
           recordService.stopRecord();
           startBtn.setText("开始录屏");
@@ -57,11 +58,11 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
-    if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        != PackageManager.PERMISSION_GRANTED) {
-      ActivityCompat.requestPermissions(this,
-          new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_REQUEST_CODE);
-    }
+//    if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//        != PackageManager.PERMISSION_GRANTED) {
+//      ActivityCompat.requestPermissions(this,
+//          new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_REQUEST_CODE);
+//    }
 
     if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.RECORD_AUDIO)
         != PackageManager.PERMISSION_GRANTED) {
